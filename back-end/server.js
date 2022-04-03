@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({
 const mongoose = require('mongoose');
 
 // connect to the database
-mongoose.connect('mongodb://127.0.0.1:27017/museum', {
+mongoose.connect('mongodb://127.0.0.1:27017/ski', {
   useNewUrlParser: true
 });
 
@@ -28,8 +28,7 @@ const upload = multer({
 // Create a scheme for items in the museum: a title and a path to an image.
 const itemSchema = new mongoose.Schema({
   title: String,
-  path: String,
-  description: String,
+  price: String,
 });
 
 // Create a model for items in the museum.
@@ -51,11 +50,10 @@ app.post('/api/photos', upload.single('photo'), async (req, res) => {
 // Create a new item in the museum: takes a title and a path to an image.
 app.post('/api/items', async (req, res) => {
   console.log("Here is the data: ");
-  console.log(req.body.description);
+  console.log(req.body.price);
   const item = new Item({
     title: req.body.title,
-    path: req.body.path,
-    description: req.body.description,
+    price: req.body.price,
   });
   try {
     await item.save();
@@ -85,7 +83,7 @@ app.put('/api/items/:id', async (req, res) => {
     });
     console.log(req.body.title);
     newItem.title = req.body.title;
-    newItem.description = req.body.description;
+    newItem.price = req.body.price;
     newItem.save();
   } catch (error) {
     console.log(error);

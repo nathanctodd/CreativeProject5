@@ -3,9 +3,9 @@
   <section class="image-gallery">
     <div class="image" v-for="item in items" :key="item.id">
       <h2>{{item.title}}</h2>
-      <h5>{{item.description}}</h5>
-      <img :src="item.path" />
+      <h5>{{item.price}}</h5>
     </div>
+    <div style="height: 100px;"></div>
   </section>
 </div>
 </template>
@@ -46,11 +46,15 @@ export default {
 }
 
 h2 {
-  font-size: 20px;
+  font-size: 17 px;
+  margin: 10px;
+  color: white; 
 }
 
 h5 {
-  font-size: 10px;
+  font-size: 20px;
+  margin: 10px;
+  color: white;
 }
 /* Masonry */
 *,
@@ -61,12 +65,24 @@ h5 {
 
 .image-gallery {
   column-gap: 1.5em;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  height: 10px;
 }
 
 .image {
-  margin: 0 0 1.5em;
+  margin: 8px;
   display: inline-block;
-  width: 100%;
+  width: 20%;
+  background-color: rgb(11, 113, 196);
+  border-radius: 10px;
+  margin-left: 100px;
+  height: 40px;
+  display: flex;
+  align-items: flex-start;
+  
 }
 
 .image img {
